@@ -16,12 +16,12 @@
 
 void MAX31723_StartTranmission(SPIConfiguration_t *spi)
 {
-    spi->cs_set();
+    spi->cs.set();
 }
 
 void MAX31723_EndTranmission(SPIConfiguration_t *spi)
 {
-    spi->cs_clear();
+    spi->cs.clear();
 }
 
 // Basic functions
