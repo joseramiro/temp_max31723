@@ -2,7 +2,7 @@
 #include "peripheral/spi/spi_master/plib_spi2_master.h"
 #include "peripheral/spi/spi_master/plib_spi1_master.h"
 
-void MAX31723_WriteByte(SPIConfiguration_t *spi, unsigned char* data)
+void MAX31723_WriteByte(SPI_t *spi, unsigned char* data)
 {
     if(spi->channel == SPI_CH1)
         SPI1_Write(data, 1);
@@ -10,7 +10,7 @@ void MAX31723_WriteByte(SPIConfiguration_t *spi, unsigned char* data)
         SPI2_Write(data, 1);
 }
 
-void MAX31723_WriteBuffer(SPIConfiguration_t *spi, unsigned char* data, unsigned int size)
+void MAX31723_WriteBuffer(SPI_t *spi, unsigned char* data, unsigned int size)
 {
     unsigned int i = 0;
 
@@ -26,7 +26,7 @@ void MAX31723_WriteBuffer(SPIConfiguration_t *spi, unsigned char* data, unsigned
     }  
 }
 
-void MAX31723_Read_Byte(SPIConfiguration_t *spi, unsigned char* data)
+void MAX31723_Read_Byte(SPI_t *spi, unsigned char* data)
 {
     if(spi->channel == SPI_CH1)
         SPI1_Read(data, 1);
@@ -34,7 +34,7 @@ void MAX31723_Read_Byte(SPIConfiguration_t *spi, unsigned char* data)
         SPI2_Read(data, 1);
 }
 
-void MAX31723_Read_Buffer(SPIConfiguration_t *spi, unsigned char* data, unsigned int size)
+void MAX31723_Read_Buffer(SPI_t *spi, unsigned char* data, unsigned int size)
 {
     if(spi->channel == SPI_CH1)
         SPI1_Read(data, size);

@@ -42,20 +42,20 @@
 typedef struct
 {
     unsigned char id;   /**< Identifiant du module (voir @ref FansMax31723IdList) */
-    SPIConfiguration_t spi;
+    SPI_t spi;
 }MAX31723Conf_t;
 
 /**
  * @brief Démarre une transmission SPI avec le module MAX31723.
  * @param spi Pointeur vers la configuration SPI utilisée pour la communication.
  */
-void MAX31723_StartTranmission(SPIConfiguration_t *spi);
+void MAX31723_StartTranmission(SPI_t *spi);
 
 /**
  * @brief Termine une transmission SPI avec le module MAX31723.
  * @param spi Pointeur vers la configuration SPI utilisée pour la communication.
  */
-void MAX31723_EndTranmission(SPIConfiguration_t *spi);
+void MAX31723_EndTranmission(SPI_t *spi);
 
 /**
  * @brief Lit le contenu d'un registre du capteur de température
@@ -64,7 +64,7 @@ void MAX31723_EndTranmission(SPIConfiguration_t *spi);
  * @param size Nombre de bytes à lire
  * @param readData Données à lire
  */
-void MAX31723_ReadRegister(SPIConfiguration_t *spi,
+void MAX31723_ReadRegister(SPI_t *spi,
                            unsigned char reg,
                            unsigned int size,
                            unsigned char* readData);
@@ -75,7 +75,7 @@ void MAX31723_ReadRegister(SPIConfiguration_t *spi,
  * @param writeData Données à écrire
  * @param size Nombre de bytes à écrire
  */
-void MAX31723_WriteRegister(SPIConfiguration_t *spi,
+void MAX31723_WriteRegister(SPI_t *spi,
                             unsigned char reg,
                             unsigned char* writeData,
                             unsigned int size);
@@ -84,31 +84,31 @@ void MAX31723_WriteRegister(SPIConfiguration_t *spi,
  * @param sensor Id du capteur de température. Voir @ref FansMax31723IdList
  * @param data Données à lire
  */
-void MAX31723_ReadConfigurationReg(SPIConfiguration_t *spi, unsigned char* data);
+void MAX31723_ReadConfigurationReg(SPI_t *spi, unsigned char* data);
 /**
  * @brief Ecrire le registre configuration/status du capteur
  * @param sensor Id du capteur de température. Voir @ref FansMax31723IdList
  * @param data Données à écrire
  */
-void MAX31723_WriteConfigurationReg(SPIConfiguration_t *spi, unsigned char* data);
+void MAX31723_WriteConfigurationReg(SPI_t *spi, unsigned char* data);
 /**
  * @brief Lit le LSB de la valeur de température du capteur
  * @param sensor Id du capteur de température. Voir @ref FansMax31723IdList
  * @param data Données à lire
  */
-void MAX31723_ReadLSBTemperatureReg(SPIConfiguration_t *spi, unsigned char* data);
+void MAX31723_ReadLSBTemperatureReg(SPI_t *spi, unsigned char* data);
 /**
  * @brief Lit le MSB de la valeur de température du capteur
  * @param sensor Id du capteur de température. Voir @ref FansMax31723IdList
  * @param data Données à lire
  */
-void MAX31723_ReadMSBTemperatureReg(SPIConfiguration_t *spi, unsigned char* data);
+void MAX31723_ReadMSBTemperatureReg(SPI_t *spi, unsigned char* data);
 /**
  * @brief Lit la valeur de température. Appelle les fonctions @ref MAX31723_ReadLSBTemperatureReg et
  * @ref MAX31723_ReadMSBTemperatureReg, puis fusionne le résultat
  * @param sensor Id du capteur de température. Voir @ref FansMax31723IdList
  * @param data Données à lire
  */
-void MAX31723_ReadTemperatureReg(SPIConfiguration_t *spi, unsigned char* data);
+void MAX31723_ReadTemperatureReg(SPI_t *spi, unsigned char* data);
 
 #endif  // PLIB_MAX31723_H
